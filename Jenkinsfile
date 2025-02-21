@@ -21,8 +21,8 @@ pipeline {
             steps {
                 sh'''
                 cd app
-                APP_PORT:5001 npm test
-                APP_PORT:5001 npm run test:coverage
+                APP_PORT=5001 npm test
+                APP_PORT=5001 npm run test:coverage
                 '''
             }
         }
@@ -31,11 +31,7 @@ pipeline {
             steps {
                 sh'''
                 cd app
-                sonar-scanner \
-                    -Dsonar.projectKey=Simple-Apps \
-                    -Dsonar.sources=. \
-                    -Dsonar.host.url=http://172.23.x.x:9000 \
-                    -Dsonar.login=token-sonar
+                 sonar-scanner   -Dsonar.projectKey=app-Anton   -Dsonar.sources=.   -Dsonar.host.url=http://172.23.5.14:9000   -Dsonar.login=sqp_f3d3815b8ef618d368ffe647e28ca54a092f0efa
                 '''
             }
         }
